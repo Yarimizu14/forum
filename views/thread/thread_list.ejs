@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../common/common-head.ejs %>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% include ../common/common-nav.ejs %>
+    <ul>
+        <% for(var i=0, len=threads.length; i<len; i++) { %>
+        <li><a href="/thread/thread?thread_id=<%= threads[i].thread_id %>"><%= threads[i].title %></a></li>
+        <% } %>
+    </ul>
+    <% include ../common/common-foot.ejs %>
+  </body>
+</html>

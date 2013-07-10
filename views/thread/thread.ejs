@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../common/common-head.ejs %>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% include ../common/common-nav.ejs %>
+    <p><%= title %></p>
+    <p>投稿数　<%= res.length %></p>
+    <p><%= description %></p>
+    <ul id="resList">
+        <% if(res.length !== 0) { %>
+            <% for(var i=0, len=res.length; i<len; i++) { %>
+                <li class="resList_each" data-id="<%= res[i].res_id %>"><%= res[i].body %></li>
+            <% } %>
+        <% } %>
+    </ul>
+    <form method="post" action="/thread/thread">
+        <input type="hidden" name="thread_id" value="<%= thread_id %>">
+        <input type="hidden" name="title" value="<%= title %>">
+        <input type="text" name="body">
+        <input type="submit" name="submit" value="POST">
+    </form>
+    <% include ../common/common-foot.ejs %>
+    <script type="text/javascript" src="/javascripts/thread/thread.js"></script>
+  </body>
+</html>
